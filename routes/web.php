@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AudioController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('item',ItemController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/audio',AudioController::class);
